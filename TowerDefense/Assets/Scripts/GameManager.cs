@@ -3,11 +3,21 @@ using System.Collections.Generic;
 using UnityEngine;
 
 public class GameManager : Singleton<GameManager> {
-	public GameObject spawnPoint;
-	public GameObject[] enemies;
-	public int maxEnemiesOnScreen;
-	public int totalEnemies;
-	public int enemiesPerSpawn;
+
+	[SerializeField]
+	private GameObject spawnPoint;
+
+	[SerializeField]
+	private GameObject[] enemies;
+
+	[SerializeField]
+	private int maxEnemiesOnScreen;
+
+	[SerializeField]
+	private int totalEnemies;
+
+	[SerializeField]
+	private int enemiesPerSpawn;
 
 	private int enemiesOnScreen = 0;
 	const float spawnDelay = 0.5f;

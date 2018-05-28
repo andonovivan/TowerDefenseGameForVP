@@ -63,6 +63,8 @@
     <Compile Include="Assets\Scripts\Enemy.cs" />
     <Compile Include="Assets\Scripts\GameManager.cs" />
     <Compile Include="Assets\Scripts\Singleton.cs" />
+    <Compile Include="Assets\Scripts\Tower\TowerButton.cs" />
+    <Compile Include="Assets\Scripts\TowerManager.cs" />
     <Reference Include="UnityEditor.StandardEvents">
       <HintPath>C:/Users/ivana/Documents/Unity/TowerDefense/Library/ScriptAssemblies/UnityEditor.StandardEvents.dll</HintPath>
     </Reference>
