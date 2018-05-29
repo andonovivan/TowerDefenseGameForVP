@@ -21,6 +21,7 @@ public class Enemy : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
 		enemy = GetComponent<Transform>();
+		GameManager.Instance.RegisterEnemy(this);
 	}
 	
 	// Update is called once per frame
@@ -43,7 +44,7 @@ public class Enemy : MonoBehaviour {
 		}
 	}
 
-	private void OnTriggerEnter2D(Collider2D other)
+	void OnTriggerEnter2D(Collider2D other)
 	{
 		if(other.tag== "checkpoint")
 		{
@@ -51,8 +52,7 @@ public class Enemy : MonoBehaviour {
 		}   
 		else if (other.tag == "Finish")
 		{
-			GameManager.Instance.RemoveEnemyFromScreen();
-			Destroy(gameObject);
+			GameManager.Instance.UnregisterEnemy(this);
 		}
 	}
 }
