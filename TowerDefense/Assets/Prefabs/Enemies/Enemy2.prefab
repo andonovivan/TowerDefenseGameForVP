@@ -98,7 +98,7 @@ Animator:
   m_GameObject: {fileID: 1278739668392472}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 85d0b61f396f5f747881570d93c48eeb, type: 2}
+  m_Controller: {fileID: 22100000, guid: 3d8457131c398014e909de1f88e14e08, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -130,6 +130,7 @@ MonoBehaviour:
   - {fileID: 4792427712849190, guid: 71767c9a2ba0e4f4783f6af254695922, type: 2}
   - {fileID: 4111989000740510, guid: 71767c9a2ba0e4f4783f6af254695922, type: 2}
   navigationUpdate: 0.01
+  healthPoints: 100
 --- !u!212 &212427219155036388
 SpriteRenderer:
   m_ObjectHideFlags: 1
