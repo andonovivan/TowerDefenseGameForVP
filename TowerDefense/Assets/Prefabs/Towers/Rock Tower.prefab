@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4106783456435972}
   - component: {fileID: 212051783597725622}
+  - component: {fileID: 114129370325360420}
   m_Layer: 8
   m_Name: Rock Tower
   m_TagString: tower
@@ -40,6 +41,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114129370325360420
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1448631295219072}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ff8d78254ad014db2c90ebf7e19099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 1
+  attackRadius: 2
+  projectile: {fileID: 114403180222429962, guid: 84af7b2574f7cf04ca1620e5ee6284b5,
+    type: 2}
 --- !u!212 &212051783597725622
 SpriteRenderer:
   m_ObjectHideFlags: 1

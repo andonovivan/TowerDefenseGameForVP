@@ -20,6 +20,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4590449727739722}
   - component: {fileID: 212507450879023448}
+  - component: {fileID: 114730580775775842}
   m_Layer: 8
   m_Name: Castle Tower
   m_TagString: tower
@@ -40,6 +41,21 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &114730580775775842
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1302006142151986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7ff8d78254ad014db2c90ebf7e19099, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeBetweenAttacks: 1
+  attackRadius: 3
+  projectile: {fileID: 114569020211760992, guid: 41864e5e7ee58454fa95f7a49b963880,
+    type: 2}
 --- !u!212 &212507450879023448
 SpriteRenderer:
   m_ObjectHideFlags: 1
