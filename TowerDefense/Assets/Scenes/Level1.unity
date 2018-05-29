@@ -8999,10 +8999,6 @@ Prefab:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1465556778}
-    - target: {fileID: 1763749227687576, guid: beb672db74f41004e99c57b88df1d4c3, type: 2}
-      propertyPath: m_StaticEditorFlags
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: beb672db74f41004e99c57b88df1d4c3, type: 2}
   m_IsPrefabParent: 0
@@ -24082,27 +24078,17 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.85333335, y: 0.85333335}
   m_EdgeRadius: 0
---- !u!1 &1465556776 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 1908546091068360, guid: c1d25b82e6706a5448bc2f4607297050,
-    type: 2}
-  m_PrefabInternal: {fileID: 1931138643}
 --- !u!4 &1465556777 stripped
 Transform:
   m_PrefabParentObject: {fileID: 4886204614410518, guid: c1d25b82e6706a5448bc2f4607297050,
     type: 2}
   m_PrefabInternal: {fileID: 1931138643}
---- !u!114 &1465556778
+--- !u!114 &1465556778 stripped
 MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1465556776}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
+  m_PrefabParentObject: {fileID: 114477176572697916, guid: c1d25b82e6706a5448bc2f4607297050,
+    type: 2}
+  m_PrefabInternal: {fileID: 1931138643}
   m_Script: {fileID: 11500000, guid: 87cac14e51baa3c46a4b6b83be899d64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &1472206326
 GameObject:
   m_ObjectHideFlags: 0
@@ -33820,6 +33806,21 @@ Prefab:
     - target: {fileID: 4886204614410518, guid: c1d25b82e6706a5448bc2f4607297050, type: 2}
       propertyPath: m_RootOrder
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 212182835941631568, guid: c1d25b82e6706a5448bc2f4607297050,
+        type: 2}
+      propertyPath: m_SortingLayerID
+      value: -224942497
+      objectReference: {fileID: 0}
+    - target: {fileID: 212182835941631568, guid: c1d25b82e6706a5448bc2f4607297050,
+        type: 2}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 212182835941631568, guid: c1d25b82e6706a5448bc2f4607297050,
+        type: 2}
+      propertyPath: m_SortingOrder
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: c1d25b82e6706a5448bc2f4607297050, type: 2}
