@@ -32,9 +32,6 @@ public class GameManager : Singleton<GameManager> {
 	private GameObject[] enemies;
 
 	[SerializeField]
-	private int maxEnemiesOnScreen;
-
-	[SerializeField]
 	private int totalEnemies = 3;
 
 	[SerializeField]
@@ -89,7 +86,7 @@ public class GameManager : Singleton<GameManager> {
 		{
 			for (int i = 0; i < enemiesPerSpawn; i++)
 			{
-				if (EnemyList.Count < maxEnemiesOnScreen)
+				if (EnemyList.Count < totalEnemies)
 				{
 					GameObject newEnemy = Instantiate(enemies[0]) as GameObject;
 					newEnemy.transform.position = spawnPoint.transform.position;
@@ -195,6 +192,8 @@ public class GameManager : Singleton<GameManager> {
 				totalEnemies = 3;
 				TotalEscaped = 0;
 				TotalMoney = 10;
+                TowerManager.Instance.DestroyAllTowers();
+                TowerManager.Instance.RenameTagsBuildSites();
 				totalMoneyLbl.text = TotalMoney.ToString();
 				totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
 				break;
