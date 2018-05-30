@@ -3938,7 +3938,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 298615987}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 1790652708}
+        m_MethodName: PlayButtonPressed
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &298615987
@@ -30431,6 +30442,12 @@ SpriteRenderer:
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
+--- !u!114 &1790652708 stripped
+MonoBehaviour:
+  m_PrefabParentObject: {fileID: 114360653872353764, guid: 8929cad4195a5a34898ad9e17778cf42,
+    type: 2}
+  m_PrefabInternal: {fileID: 1274474807}
+  m_Script: {fileID: 11500000, guid: bea1d016294f2eb43900e5916d145552, type: 3}
 --- !u!1 &1793612056
 GameObject:
   m_ObjectHideFlags: 0
