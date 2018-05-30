@@ -43,11 +43,11 @@ public class Enemy : MonoBehaviour {
 			{
 				if(target < wayPoints.Length)
 				{
-					enemy.position = Vector2.MoveTowards(enemy.position, wayPoints[target].position, navigationTime);
+					enemy.position = Vector2.MoveTowards(enemy.position, wayPoints[target].position, 0.8f * navigationTime);
 				}
 				else
 				{
-					enemy.position = Vector2.MoveTowards(enemy.position, exitPoint.position, navigationTime);   
+					enemy.position = Vector2.MoveTowards(enemy.position, exitPoint.position, 0.8f * navigationTime);   
 				}
 				navigationTime = 0;
 			}
@@ -85,7 +85,6 @@ public class Enemy : MonoBehaviour {
 		}
 		else
 		{
-			anim.SetTrigger("didDie");
 			Die();
 		}
 	}
@@ -93,6 +92,7 @@ public class Enemy : MonoBehaviour {
 	public void Die()
 	{
 		isDead = true;
+		anim.SetTrigger("didDie");
 		enemyCollider.enabled = false;
 		GameManager.Instance.TotalKilled++;
 		GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.Death);

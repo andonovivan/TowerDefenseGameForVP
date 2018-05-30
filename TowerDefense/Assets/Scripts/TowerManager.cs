@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
@@ -20,11 +19,14 @@ public class TowerManager : Singleton<TowerManager> {
 	
 	// Update is called once per frame
 	void Update () {
+		// if the left mouse button is clicked.
 		if (Input.GetMouseButtonDown(0))
 		{
+			// get the mouse position on the screen and send a raycast into the game world from that position.
 			Vector2 worldPoint = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 			RaycastHit2D hit = Physics2D.Raycast(worldPoint, Vector2.zero);
 
+			// if something was hit, the RaycastHit2D.collider will not be null.
 			if (hit.collider.tag == "buildSite")
 			{
 				buildTile = hit.collider;
@@ -109,5 +111,6 @@ public class TowerManager : Singleton<TowerManager> {
 	public void DisableDragSprite()
 	{
 		spriteRenderer.enabled = false;
+		TowerButtonPressed = null;
 	}
 }

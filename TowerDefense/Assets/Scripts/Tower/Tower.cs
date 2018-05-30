@@ -35,7 +35,7 @@ public class Tower : MonoBehaviour {
 		}
 		else
 		{
-			if(attackCounter <= 0)
+			if(attackCounter <= 0f)
 			{
 				isAttacking = true;
 				attackCounter = timeBetweenAttacks; // reset attack counter
@@ -99,7 +99,7 @@ public class Tower : MonoBehaviour {
 			var direction = targetEnemy.transform.localPosition - transform.localPosition;
 			var angleDirection = Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg;
 			projectile.transform.rotation = Quaternion.AngleAxis(angleDirection, Vector3.forward);
-			projectile.transform.localPosition = Vector2.MoveTowards(projectile.transform.localPosition, targetEnemy.transform.localPosition, 5f * Time.deltaTime);
+			projectile.transform.localPosition = Vector2.MoveTowards(projectile.transform.localPosition, targetEnemy.transform.localPosition, 10f * Time.deltaTime);
 			yield return null;
 		}
 		if (projectile != null || targetEnemy == null)
@@ -126,7 +126,7 @@ public class Tower : MonoBehaviour {
 		List<Enemy> enemiesInRange = new List<Enemy>();
 		foreach(Enemy enemy in GameManager.Instance.EnemyList)
 		{
-			if(Vector2.Distance(transform.localPosition, enemy.transform.localPosition) <= attackRadius) // distance between two objects
+			if(Vector2.Distance(transform.localPosition, enemy.transform.localPosition) <= attackRadius && !enemy.IsDead) // distance between two objects
 			{
 				enemiesInRange.Add(enemy);
 			}
@@ -141,7 +141,7 @@ public class Tower : MonoBehaviour {
 
 		foreach(Enemy enemy in GetEnemiesInRange())
 		{
-			if(Vector2.Distance(transform.localPosition, enemy.transform.localPosition) < smallestDistance)
+			if(Vector2.Distance(transform.localPosition, enemy.transform.localPosition) < smallestDistance && !enemy.IsDead)
 			{
 				smallestDistance = Vector2.Distance(transform.localPosition, enemy.transform.localPosition);
 				nearestEnemy = enemy;

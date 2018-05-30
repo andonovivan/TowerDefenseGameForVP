@@ -90,13 +90,9 @@ public class GameManager : Singleton<GameManager> {
 		{
 			for (int i = 0; i < enemiesPerSpawn; i++)
 			{
-				if (EnemyList.Count < totalEnemies)
-				{
-					Enemy newEnemy = Instantiate(enemies[Random.Range(0, enemiesToSpawn)]);
-					newEnemy.transform.position = spawnPoint.transform.position;
-				}
+				Enemy newEnemy = Instantiate(enemies[Random.Range(0, enemiesToSpawn)]);
+				newEnemy.transform.position = spawnPoint.transform.position;
 			}
-
 			yield return new WaitForSeconds(spawnDelay);
 			StartCoroutine(Spawn());
 		}
@@ -111,6 +107,7 @@ public class GameManager : Singleton<GameManager> {
 	{
 		EnemyList.Remove(enemy);
 		Destroy(enemy.gameObject); // removing the gameObject from the screen
+		IsWaveOver();
 	}
 
 	public void DestroyAllEnemies()
@@ -136,9 +133,9 @@ public class GameManager : Singleton<GameManager> {
 	public void IsWaveOver()
 	{
 		totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
-		if((RoundEscaped + TotalKilled) == totalEnemies)
+		if ((RoundEscaped + TotalKilled) == totalEnemies || totalEscaped >= 10)
 		{
-			if(waveNumber <= enemies.Length)
+			if (waveNumber <= enemies.Length)
 			{
 				enemiesToSpawn = waveNumber;
 			}
@@ -149,7 +146,7 @@ public class GameManager : Singleton<GameManager> {
 
 	public void SetCurrentGameState()
 	{
-		if (TotalEscaped >= 3)
+		if (TotalEscaped >= 10)
 		{
 			currentState = GameStatus.gameover;
 		}
@@ -199,9 +196,10 @@ public class GameManager : Singleton<GameManager> {
 				totalEnemies = 3;
 				TotalEscaped = 0;
 				TotalMoney = 10;
+				enemiesToSpawn = 0;
+				waveNumber = 0;
 				TowerManager.Instance.DestroyAllTowers();
 				TowerManager.Instance.RenameTagsBuildSites();
-				enemiesToSpawn = 0;
 				totalMoneyLbl.text = TotalMoney.ToString();
 				totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
 				audioSource.PlayOneShot(SoundManager.Instance.NewGame); // complete the audio clip without cutting it off
