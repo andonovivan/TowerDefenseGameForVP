@@ -47,6 +47,7 @@ public class GameManager : Singleton<GameManager> {
 	private int totalKilled = 0;
 	private int whichEnemiesToSpawn = 0;
 	private GameStatus currentState = GameStatus.play;
+	private AudioSource audioSource;
 
 	public List<Enemy> EnemyList = new List<Enemy>();
 
@@ -55,6 +56,7 @@ public class GameManager : Singleton<GameManager> {
 	public int TotalEscaped { get { return totalEscaped; } set { totalEscaped = value; } }
 	public int RoundEscaped { get { return roundEscaped; } set { roundEscaped = value; } }
 	public int TotalKilled { get { return totalKilled; } set { totalKilled = value; } }
+	public AudioSource AudioSource { get { return audioSource; } }
 
 	public int TotalMoney {
 		get
@@ -72,6 +74,7 @@ public class GameManager : Singleton<GameManager> {
 	void Start()
 	{
 		playButton.gameObject.SetActive(false);
+		audioSource = GetComponent<AudioSource>();
 		ShowMenu();
 	}
 
@@ -142,7 +145,7 @@ public class GameManager : Singleton<GameManager> {
 
 	public void SetCurrentGameState()
 	{
-		if (totalEnemies >= 10)
+		if (TotalEscaped >= 3)
 		{
 			currentState = GameStatus.gameover;
 		}
@@ -164,7 +167,7 @@ public class GameManager : Singleton<GameManager> {
 		{
 			case GameStatus.gameover:
 				playButtonLbl.text = "Play Again!";
-				// add gameover
+				AudioSource.PlayOneShot(SoundManager.Instance.Gameover);
 				break;
 			case GameStatus.next:
 				playButtonLbl.text = "Next Wave";
@@ -192,10 +195,11 @@ public class GameManager : Singleton<GameManager> {
 				totalEnemies = 3;
 				TotalEscaped = 0;
 				TotalMoney = 10;
-                TowerManager.Instance.DestroyAllTowers();
-                TowerManager.Instance.RenameTagsBuildSites();
+				TowerManager.Instance.DestroyAllTowers();
+				TowerManager.Instance.RenameTagsBuildSites();
 				totalMoneyLbl.text = TotalMoney.ToString();
 				totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
+				audioSource.PlayOneShot(SoundManager.Instance.NewGame); // complete the audio clip without cutting it off
 				break;
 		}
 		DestroyAllEnemies();

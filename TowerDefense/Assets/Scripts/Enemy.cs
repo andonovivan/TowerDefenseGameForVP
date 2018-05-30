@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
@@ -82,6 +80,7 @@ public class Enemy : MonoBehaviour {
 		if(healthPoints - hitpoints > 0)
 		{
 			healthPoints -= hitpoints;
+			GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.Hit);
 			anim.Play("Hurt");
 		}
 		else
@@ -96,6 +95,7 @@ public class Enemy : MonoBehaviour {
 		isDead = true;
 		enemyCollider.enabled = false;
 		GameManager.Instance.TotalKilled++;
+		GameManager.Instance.AudioSource.PlayOneShot(SoundManager.Instance.Death);
 		GameManager.Instance.AddMoney(rewardAmt);
 		GameManager.Instance.IsWaveOver();
 	}
