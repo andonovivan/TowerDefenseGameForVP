@@ -29,7 +29,7 @@ public class GameManager : Singleton<GameManager> {
 	private GameObject spawnPoint;
 
 	[SerializeField]
-	private GameObject[] enemies;
+	private Enemy[] enemies;
 
 	[SerializeField]
 	private int totalEnemies = 3;
@@ -46,6 +46,7 @@ public class GameManager : Singleton<GameManager> {
 	private int roundEscaped = 0;
 	private int totalKilled = 0;
 	private int whichEnemiesToSpawn = 0;
+	private int enemiesToSpawn = 0;
 	private GameStatus currentState = GameStatus.play;
 	private AudioSource audioSource;
 
@@ -91,7 +92,7 @@ public class GameManager : Singleton<GameManager> {
 			{
 				if (EnemyList.Count < totalEnemies)
 				{
-					GameObject newEnemy = Instantiate(enemies[0]) as GameObject;
+					Enemy newEnemy = Instantiate(enemies[Random.Range(0, enemiesToSpawn)]);
 					newEnemy.transform.position = spawnPoint.transform.position;
 				}
 			}
@@ -137,7 +138,10 @@ public class GameManager : Singleton<GameManager> {
 		totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
 		if((RoundEscaped + TotalKilled) == totalEnemies)
 		{
-
+			if(waveNumber <= enemies.Length)
+			{
+				enemiesToSpawn = waveNumber;
+			}
 			SetCurrentGameState();
 			ShowMenu();
 		}
@@ -197,6 +201,7 @@ public class GameManager : Singleton<GameManager> {
 				TotalMoney = 10;
 				TowerManager.Instance.DestroyAllTowers();
 				TowerManager.Instance.RenameTagsBuildSites();
+				enemiesToSpawn = 0;
 				totalMoneyLbl.text = TotalMoney.ToString();
 				totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
 				audioSource.PlayOneShot(SoundManager.Instance.NewGame); // complete the audio clip without cutting it off
