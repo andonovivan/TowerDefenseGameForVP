@@ -40,6 +40,9 @@ public class GameManager : Singleton<GameManager> {
 	[SerializeField]
 	private Button playButton;
 
+    [SerializeField]
+    private GameObject gameOverUI;
+
 	private int waveNumber = 0;
 	private int totalMoney = 10;
 	private int totalEscaped = 0;
@@ -149,7 +152,8 @@ public class GameManager : Singleton<GameManager> {
 		if (TotalEscaped >= 10)
 		{
 			currentState = GameStatus.gameover;
-		}
+            gameOverUI.SetActive(true);
+        }
 		else if (waveNumber == 0 && (TotalKilled + RoundEscaped) == 0)
 		{
 			currentState = GameStatus.play;
@@ -221,4 +225,6 @@ public class GameManager : Singleton<GameManager> {
 			TowerManager.Instance.TowerButtonPressed = null;
 		}
 	}
+
+    
 }
