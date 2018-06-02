@@ -43,6 +43,10 @@ public class GameManager : Singleton<GameManager> {
     [SerializeField]
     private GameObject gameOverUI;
 
+    [SerializeField]
+    private GameObject waveOverUI;
+
+    private bool playsound = true;
 	private int waveNumber = 0;
 	private int totalMoney = 10;
 	private int totalEscaped = 0;
@@ -136,6 +140,7 @@ public class GameManager : Singleton<GameManager> {
 	public void IsWaveOver()
 	{
 		totalEscapedLbl.text = "Escaped " + TotalEscaped + "/10";
+        
 		if ((RoundEscaped + TotalKilled) == totalEnemies || totalEscaped >= 10)
 		{
 			if (waveNumber <= enemies.Length)
@@ -149,21 +154,24 @@ public class GameManager : Singleton<GameManager> {
 
 	public void SetCurrentGameState()
 	{
-		if (TotalEscaped >= 10)
-		{
-			currentState = GameStatus.gameover;
+        if (TotalEscaped >= 10)
+        {
+            currentState = GameStatus.gameover;
             gameOverUI.SetActive(true);
         }
-		else if (waveNumber == 0 && (TotalKilled + RoundEscaped) == 0)
-		{
-			currentState = GameStatus.play;
-		}
-		else if (waveNumber >= totalWaves)
-		{
-			currentState = GameStatus.win;
-		}
-		else
-			currentState = GameStatus.next;
+        else if (waveNumber == 0 && (TotalKilled + RoundEscaped) == 0)
+        {
+            currentState = GameStatus.play;
+        }
+        else if (waveNumber >= totalWaves)
+        {
+            currentState = GameStatus.win;
+        }
+        else
+        {
+            currentState = GameStatus.next;
+            waveOverUI.SetActive(true);
+        }
 	}
 
 	public void ShowMenu()
@@ -172,7 +180,11 @@ public class GameManager : Singleton<GameManager> {
 		{
 			case GameStatus.gameover:
 				playButtonLbl.text = "Play Again!";
-				AudioSource.PlayOneShot(SoundManager.Instance.Gameover);
+                if (playsound)
+                {
+                    AudioSource.PlayOneShot(SoundManager.Instance.Gameover);
+                    playsound = false;
+                }
 				break;
 			case GameStatus.next:
 				playButtonLbl.text = "Next Wave";
@@ -226,5 +238,8 @@ public class GameManager : Singleton<GameManager> {
 		}
 	}
 
-    
+    public void turnOffUI()
+    {
+        waveOverUI.SetActive(false);
+    }
 }
